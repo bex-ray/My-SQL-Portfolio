@@ -1,0 +1,61 @@
+CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, artist TEXT, hometown TEXT, age INTEGER);
+
+INSERT INTO singers (artist, hometown, age) VALUES ("Taylor Swift", "West Reading, Pennsylvania", "34");
+INSERT INTO singers (artist, hometown, age) VALUES ("Selena Gomez", "Grand Prarie, Texas", "31");
+INSERT INTO singers(artist, hometown, age)  VALUES ("Sabrina Carpenter", "Quakertown, Pennsylvania", "24");
+INSERT INTO singers (artist, hometown, age) VALUES ("Gracie Abrams", "Los Angeles, Califonia", "24");
+INSERT INTO singers (artist, hometown, age) VALUES ("Lana Del Ray", "New York City, New York", "38");
+
+/*Artist's top 3 songs (according to Spotify) that weren't collaborations*/
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, title TEXT, genre TEXT, release_year INTEGER);
+
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("1", "Cruel Summer", "Pop", "2019");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("1", "Lover", "Pop", "2019");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("1", "Anti-Hero", "Synth-Pop", "2022");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("2", "Single Soon", "Dance-Pop", "2023");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("2", "Lose You To Love Me", "Pop", "2020");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("2", "People You Know", "Pop", "2020");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("3", "Feather", "Pop", "2022");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("3", "Nonsense", "Pop", "2022");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("3", "because i liked a boy", "Pop", "2022");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("4", "I miss you, I'm sorry", "Indie-Pop", "2020");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("4", "Mess It Up", "Pop", "2021");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("4", "Feels Like", "Indie-Pop", "2022");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("5", "Summertime Sadness", "Trip Hop", "2012");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("5", "Say Yes To Heaven", "Indie-Pop", "2023");
+INSERT INTO songs (singer_id, title, genre, release_year) VALUES ("5", "Young And Beautiful", "Indie-Pop", "2013");
+
+/* Grammy Award wins and nominations (according to Wikipedia)*/
+
+CREATE TABLE grammys (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, nominations INTEGER, winner TEXT, awards_won INTEGER);
+INSERT INTO grammys (singer_id, nominations, winner, awards_won) VALUES ("1", "52", "Yes", "14" );
+INSERT INTO grammys (singer_id, nominations, winner, awards_won) VALUES ("2", "2", "No", "0" );
+INSERT INTO grammys (singer_id, nominations, winner, awards_won)  VALUES ("3", "0", "No", "0");
+INSERT INTO grammys (singer_id, nominations, winner, awards_won) VALUES ("4", "1", "No", "0" );
+INSERT INTO grammys (singer_id, nominations, winner, awards_won) VALUES ("5", "11", "No", "0" );
+
+
+SELECT * FROM singers;
+
+SELECT * FROM songs;
+
+/*Taylor Swift's top 3 songs (according to Spotify)*/
+
+SELECT singers.artist, songs.title AS "Top Songs" FROM songs
+JOIN singers
+ON singers.id=songs.singer_id
+WHERE artist = "Taylor Swift";
+
+/*Our artists and how many times they have been nominated for a Grammy vs. how many times they have won a Grammy*/
+
+SELECT singers.artist, grammys.nominations, grammys.awards_won FROM singers
+JOIN grammys
+ON singers.id = grammys.singer_id;
+
+/*Indie-Pop songs from our artists*/
+
+SELECT singers.artist, songs.title, songs.genre FROM singers
+JOIN songs
+ON singers.id=songs.singer_id
+WHERE genre = "Indie-Pop"
