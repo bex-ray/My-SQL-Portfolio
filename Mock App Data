@@ -1,0 +1,38 @@
+CREATE TABLE user_data (
+id INTEGER PRIMARY KEY, 
+name TEXT, 
+birthday TEXT, 
+email TEXT);
+
+CREATE TABLE finch_data (
+id INTEGER PRIMARY KEY, 
+user_id INTEGER, 
+finch_name TEXT, 
+finch_color TEXT,
+date TEXT,
+emotion TEXT, 
+log_entry TEXT);
+
+INSERT INTO user_data VALUES (1,"Lavender Mayweather", "06/13/2015", "lavender.mayweather@gmail.com");
+INSERT INTO user_data VALUES (2,"Sage Cloverfield", "08/20/1995", "sage.mode@gmail.com");
+INSERT INTO user_data VALUES (3,"Thyme Suncrest", "04/02/2005", "thymeismoney@gmail.com");
+
+
+INSERT INTO finch_data VALUES (1, 1,"Tweet-heart", "Pink", "03/02/2024", "Sad", "I got in a fight with my best friend today.");
+INSERT INTO finch_data VALUES (2, 2,"Lemon", "Yellow", "03/02/2024", "Excited", "I'm trying a new recipe today!");
+INSERT INTO finch_data VALUES (3, 2,"Lemon", "Yellow", "03/02/2024", "Happy", "The recipe turned out even better than i thought. Everyone was asking me for it, but I think I will keep the recipe a secret!");
+INSERT INTO finch_data VALUES (4, 3,"Pudge", "Purple", "03/02/2024", "Frustrated", "I studied all night and still failed my test. I just don't understand why I can't figure this out.");
+
+SELECT * FROM user_data;
+
+SELECT * FROM finch_data;
+
+UPDATE finch_data SET log_entry = "I got in a fight with my best friend. We made up, but I am still sad about what happened." WHERE id = 1;
+
+SELECT * FROM finch_data;
+
+DELETE FROM finch_data WHERE id = 4;
+
+INSERT INTO finch_data VALUES (5, 3,"Pudge", "Purple", "03/02/2024", "Relieved", "It turns out that my teacher posted the wrong grade for me and I actually passed! Hard work really does pay off!");
+
+SELECT * FROM finch_data;
