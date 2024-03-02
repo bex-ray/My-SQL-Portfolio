@@ -1,0 +1,38 @@
+/** Bex's Plant Shop inventory:
+Sunflower seeds (10) ($3)
+Daisies seeds (5) ($3)
+Pansy seeds (6) ($3)
+Roses bushes (6) ($10)
+Pink Hydrangea bushes (7) ($10)
+Blue Hydrangea bushes (5) ($10)
+Lilly plants (6) ($5)
+Poppy plant (4)($5)
+Fan Palm plant (2) ($10)
+Dalia plant (5) ($10)
+Lemon tree sapling (4) ($20)
+Orange tree sapling (4) ($20)
+Pomagranate tree sapling (4) ($20)
+Golden Pothos cutting (5) ($2.50)
+English Ivy cutting (5) ($2.50)**/
+
+CREATE TABLE inventory (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, product TEXT, cost INTEGER);
+INSERT INTO inventory VALUES (1, "Sunflower seeds", 10, "seeds", 3);
+INSERT INTO inventory VALUES (2, "Daisies seeds", 5, "seeds", 3);
+INSERT INTO inventory VALUES (3, "Pansy seeds", 6, "seeds", 3);
+INSERT INTO inventory VALUES (4,"Roses bushes", 6, "plant", 10);
+INSERT INTO inventory VALUES (5, "Pink Hydrangea bushes", 7, "plant", 10);
+INSERT INTO inventory VALUES (6, "Blue Hydrangea bushes", 5, "plant", 10);
+INSERT INTO inventory VALUES (7, "Lilly plants", 6, "plant", 5);
+INSERT INTO inventory VALUES (8, "Poppy plant", 4, "plant", 5);
+INSERT INTO inventory VALUES (9, "Fan Palm plant", 2, "plant", 10);
+INSERT INTO inventory VALUES (10, "Dalia plant", 5, "plant", 10);
+INSERT INTO inventory VALUES (11, "Lemon tree sapling", 4, "tree", 20);
+INSERT INTO inventory VALUES (12, "Orange tree sapling", 4, "tree", 20);
+INSERT INTO inventory VALUES (13, "Pomagranate tree sapling", 4, "tree", 20);
+INSERT INTO inventory VALUES (14, "Golden Pothos cutting", 5, "plant", 2.50);
+INSERT INTO inventory VALUES (15, "English Ivy cutting", 5, "plant", 2.50);
+SELECT * FROM inventory;
+SELECT * FROM inventory ORDER BY cost;
+SELECT SUM(quantity) FROM inventory
+
+
